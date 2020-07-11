@@ -28,3 +28,6 @@ def post_detail(request, post_id):
     }
     return render(request, 'blog/post_detail.html', context)
 
+def test(request):
+    return render(request, 'blog/test2.html')
+
