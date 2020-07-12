@@ -9,7 +9,7 @@ def authors_post (request,author_name):
 
     posts = Post.objects.filter(author=author_name)
 
-    return render(request, 'blog/authors_post.html', {'posts': posts})
+    return render(request, 'blog/authors_post.html', {'posts': posts, 'name': author_name})
 
 
 
