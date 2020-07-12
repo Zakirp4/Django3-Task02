@@ -20,7 +20,7 @@ class Post(models.Model):
     # author = models.CharField(max_length=50, blank=True)
     view_count = models.IntegerField(default=0)
     description = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='post')
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 

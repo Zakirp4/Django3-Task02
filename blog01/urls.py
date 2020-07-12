@@ -9,4 +9,5 @@ urlpatterns = [
     path('detail/<int:post_id>', post_detail, name='post-detail'),
     path('authors', author_list, name='authors'),
     path('authors/<author_name>', authors_post, name='author-post'),
+    path('category/<category_name>', category_post, name='category-post'),
 ]
