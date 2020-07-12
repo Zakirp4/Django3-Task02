@@ -15,7 +15,8 @@
 </head>
 <body>
 <dir class="container">
-  <button type="button" class="btn btn-secondary"><a href="{% url 'post_list' %}">PostList</a></button>
+  <button type="button" class="btn btn-secondary"><a href="{% url 'post-list' %}">PostList</a></button>
+  <button type="button" class="btn btn-secondary"><a href="{% url 'authors' %}">AuthorList</a></button>
   {% block content %}
 
   {% endblock %}

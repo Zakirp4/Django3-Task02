@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for author in authors %}
-<li><a href="{% url 'author_post' author.name %}">{{author.name}}</a></li>
+<li><a href="{% url 'author-post' author.name %}">{{author.name}}</a></li>
 {% endfor %}
 
 {% endblock %}
