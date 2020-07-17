@@ -9,6 +9,21 @@ def category_post(request, category_name):
 
     return render(request, 'blog/category_details_new.html', {'posts': posts, 'category_list': category_list, 'name': category_name})
 
+def category_add(request):
+    # print("request type: ", request.method)
+    print("request data: ", request.GET)
+    user_name = request.GET.get("user_name")
+
+    if user_name:
+        context = {
+            "name": user_name
+        }
+    else:
+        context ={}
+
+
+    return render(request, 'blog/category_add_new.html',context)
+
 
 
 def author_list(request):
