@@ -9,5 +9,6 @@ class CategoryAddForm(forms.Form):
     #     widgets = {
     #          'name': forms.TextInput(attrs={'class': 'form-control'}),
     #     }
-
+class AuthorAddForm(forms.Form):
+     name = forms.CharField()
 

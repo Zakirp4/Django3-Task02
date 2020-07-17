@@ -8,6 +8,10 @@
         <h1 class="my-4">This is Django Blog
 <!--          <small>Secondary Text</small>-->
         </h1>
+          <a class="btn btn-outline-secondary" href="{% url 'author-add' %}">Add Author</a>
+
+<!--          <button type="button" class="btn btn-primary btn-lg btn-block"><a href="{% url 'author-add' %}"></a></button>-->
+          <br>
 {% for author in authors %}
         <!-- Blog Post -->
         <div class="card mb-4">
@@ -49,7 +53,7 @@
 
         <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
+          <h5 class="card-header">Categories <small><a href="{% url 'category-add' %}">+</a></small></h5>
           <div class="card-body">
             <div class="row">
               <div class="col-lg-6">

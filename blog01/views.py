@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post, Author, Category
-from .forms import CategoryAddForm
+from .forms import CategoryAddForm, AuthorAddForm
 
 
 def category_post(request, category_name):
@@ -28,8 +28,6 @@ def category_add(request):
     }
     return render(request, 'blog/category_add_new.html',context)
 
-
-
 def author_list(request):
     authors = Author.objects.all()
     category = Category.objects.all()
@@ -47,6 +45,23 @@ def authors_post (request, author_name):
 
     return render(request, 'blog/author_details_new.html', {'posts': posts, 'category_list': category, 'name': author_name})
 
+def author_add(request):
+    category_list = Category.objects.all()
+    forms = AuthorAddForm(request.POST or None)
+
+    if request.method == 'POST':
+        if forms.is_valid():
+            c_name = forms.cleaned_data["name"]
+            Author.objects.create(
+                    name=c_name,
+                )
+            return redirect('authors')
+
+    context = {
+        'forms': forms,
+        'category_list': category_list
+    }
+    return render(request, 'blog/author_add_new.html',context)
 
 
 def post_list(request):
