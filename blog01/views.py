@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Author, Category
+from .forms import CategoryAddForm
 
 
 def category_post(request, category_name):
@@ -10,18 +11,21 @@ def category_post(request, category_name):
     return render(request, 'blog/category_details_new.html', {'posts': posts, 'category_list': category_list, 'name': category_name})
 
 def category_add(request):
-    # print("request type: ", request.method)
-    print("request data: ", request.GET)
-    user_name = request.GET.get("user_name")
+    category_list = Category.objects.all()
+    forms = CategoryAddForm(request.POST or None)
 
-    if user_name:
-        context = {
-            "name": user_name
-        }
-    else:
-        context ={}
+    if request.method == 'POST':
+        if forms.is_valid():
+            c_name = forms.cleaned_data["name"]
+            Category.objects.create(
+                    name=c_name,
+                )
+            return redirect('category-add')
 
-
+    context = {
+        'forms': forms,
+        'category_list': category_list
+    }
     return render(request, 'blog/category_add_new.html',context)
 
 

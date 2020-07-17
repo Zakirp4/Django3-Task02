@@ -8,17 +8,16 @@
             <h1 class="my-4">This is Django Blog
                 <!--          <small>Enter Category Name</small>-->
             </h1>
-            <form action="" method="get">
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header text-center"><h3>Add Category Form</h3></div>
 
                             <div class="card-body">
-
-                                Enter Category Name: <input type="text" name="user_name">
-
-
+                                {{ forms.as_p }}
+<!--                                Enter Category Name: <input type="text" name="name">-->
                             </div>
                             <div class="card-footer">
                                 <input type="submit" value="Submit">
@@ -26,20 +25,17 @@
                             </div>
                             <dev>
                                 {% if name %}
-        <h1>Hello {{ name }}, How are you?</h1>
-{% endif %}
+                                <h1>Hello {{ name }}, How are you?</h1>
+                                {% endif %}
                             </dev>
-
                         </div>
                     </div>
                 </div>
             </form>
-
         </div>
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
-
             <!-- Search Widget -->
             <div class="card my-4">
                 <h5 class="card-header">Search</h5>
